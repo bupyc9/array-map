@@ -179,9 +179,8 @@ class ArrayMap extends BaseArrayObject {
         }
 
         $array = array_slice($this->getArray(), $offset, $length, $preserveKeys);
-        $this->setArray($array);
 
-        return $this;
+        return new self($array);
     }
 
     /**
