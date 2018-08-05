@@ -97,6 +97,13 @@ $array = ArrayMap::create($array)
     ->getArray()
 ```
 
+#### Chunk
+```php
+$array = ArrayMap::create($array)
+    ->chunk(2)
+    ->getArray()
+```
+
 Example of use
 --------------
 ArrayAccess class, multi array access — https://github.com/petrgrishin/array-access
