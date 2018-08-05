@@ -141,6 +141,15 @@ class ArrayMapTest extends PHPUnit_Framework_TestCase {
         });
         $this->assertEquals($expected, $instanceFirst->getArray());
     }
+
+    public function testSlice() {
+        $data = ArrayMap::create(array('a', 'b', 'c'));
+        $this->assertEquals($data->slice(0, 1), ArrayMap::create(array('a')));
+        $this->assertEquals($data->slice(0, 2), ArrayMap::create(array('a', 'b')));
+        $this->assertEquals($data->slice(-1, 1), ArrayMap::create(array('c')));
+        $this->assertEquals($data->slice(1, -1), ArrayMap::create(array('b')));
+        $this->assertEquals($data->slice(2, 1, true), ArrayMap::create(array(2 => 'c')));
+    }
 }
 
 class ArrayMapTest_ArrayObject implements ArrayObject {
