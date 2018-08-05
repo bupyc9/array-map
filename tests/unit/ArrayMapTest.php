@@ -143,12 +143,21 @@ class ArrayMapTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testSlice() {
-        $data = ArrayMap::create(array('a', 'b', 'c'));
-        $this->assertEquals($data->slice(0, 1), ArrayMap::create(array('a')));
-        $this->assertEquals($data->slice(0, 2), ArrayMap::create(array('a', 'b')));
-        $this->assertEquals($data->slice(-1, 1), ArrayMap::create(array('c')));
-        $this->assertEquals($data->slice(1, -1), ArrayMap::create(array('b')));
-        $this->assertEquals($data->slice(2, 1, true), ArrayMap::create(array(2 => 'c')));
+        $original = array('a', 'b', 'c');
+        $instance = ArrayMap::create($original);
+        $this->assertEquals($instance->slice(0, 1), ArrayMap::create(array('a')));
+        $this->assertEquals($instance->slice(0, 2), ArrayMap::create(array('a', 'b')));
+        $this->assertEquals($instance->slice(-1, 1), ArrayMap::create(array('c')));
+        $this->assertEquals($instance->slice(1, -1), ArrayMap::create(array('b')));
+        $this->assertEquals($instance->slice(2, 1, true), ArrayMap::create(array(2 => 'c')));
+    }
+
+    public function testChunk()
+    {
+        $original = array('a', 'b', 'c');
+        $instance = ArrayMap::create($original);
+        $this->assertEquals($instance->chunk(2), ArrayMap::create(array(array('a', 'b'), array('c'))));
+        $this->assertEquals($instance->chunk(2, true), ArrayMap::create(array(array(0 => 'a', 1 => 'b'), array(2 => 'c'))));
     }
 }
 
