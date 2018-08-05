@@ -90,6 +90,13 @@ $array = ArrayMap::create($array)
     ->getArray();
 ```
 
+#### Slice
+```php
+$array = ArrayMap::create($array)
+    ->slice(1, 1)
+    ->getArray()
+```
+
 Example of use
 --------------
 ArrayAccess class, multi array access — https://github.com/petrgrishin/array-access
